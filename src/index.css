@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -61,13 +59,11 @@ h1 {
 }
 
 html {
-  font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
 body {
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100svh;
 }
