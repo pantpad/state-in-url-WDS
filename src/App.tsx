@@ -14,12 +14,12 @@ export default function App() {
   const pcOnly = url.searchParams.get("pcOnly");
 
   const items = allItems.filter((item) => {
-    if (q && pcOnly)
+    if (q && pcOnly === "true")
       return (
         item.name.toLowerCase().includes(q.toLowerCase()) && item.type === "pc"
       );
     if (q) return item.name.toLowerCase().includes(q.toLowerCase());
-    if (pcOnly) return item.type === "pc";
+    if (pcOnly === "true") return item.type === "pc";
 
     return true;
   });
