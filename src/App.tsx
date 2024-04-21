@@ -31,6 +31,7 @@ export default function App() {
   }
 
   console.log(q, pcOnly, refreshState);
+  console.log(items);
 
   return (
     <>

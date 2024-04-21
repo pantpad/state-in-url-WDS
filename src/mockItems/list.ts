@@ -33,7 +33,7 @@ const alphabet = [
   "Zed",
 ];
 
-const categories = ["pc", "other"];
+const categories = ["pc", "other", "assistance"];
 
 export const mockList = [] as listItem[];
 
@@ -41,7 +41,7 @@ function generateRandomItem() {
   return {
     id: Math.floor(Math.random() * Math.floor(Math.random() * Date.now())),
     name: alphabet[Math.floor(Math.random() * 26)],
-    type: categories[Math.floor(Math.random() * 1)],
+    type: categories[Math.round(Math.random())],
   };
 }
 
