@@ -16,13 +16,10 @@ export default function App() {
   const items = allItems.filter((item) => {
     if (q && pcOnly)
       return (
-        item.name.toLowerCase().includes(q.toLowerCase()) && item.type == "pc"
+        item.name.toLowerCase().includes(q.toLowerCase()) && item.type === "pc"
       );
-    if (q)
-      return (
-        item.name.toLowerCase().includes(q.toLowerCase()) && item.type == "pc"
-      );
-    if (pcOnly) return item.type == "pc";
+    if (q) return item.name.toLowerCase().includes(q.toLowerCase());
+    if (pcOnly) return item.type === "pc";
 
     return true;
   });
