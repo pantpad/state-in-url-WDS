@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import CurrentPage from "./components/CurrentPage";
 import Filters from "./components/Filters";
@@ -5,17 +6,34 @@ import List from "./components/List";
 import Nav from "./components/Nav";
 
 import { mockList as allItems } from "./mockItems/list";
+const url = new URL(document.location.href);
 
 export default function App() {
-  console.log(allItems);
+  const [refreshState, setRefreshState] = useState(false);
+  const q = url.searchParams.get("q");
+  const pcOnly = url.searchParams.get("pcOnly");
 
-  const url = new URL(document.location.href);
-  console.log(url.pathname);
+  const items = allItems.filter((item) => {
+    if (q && pcOnly)
+      return (
+        item.name.toLowerCase().includes(q.toLowerCase()) && item.type == "pc"
+      );
+    if (q)
+      return (
+        item.name.toLowerCase().includes(q.toLowerCase()) && item.type == "pc"
+      );
+    if (pcOnly) return item.type == "pc";
+
+    return true;
+  });
 
   function addSearchParam(name: string, value: string) {
     url.searchParams.set(name, value);
     window.history.replaceState(null, "null", url);
+    setRefreshState((prev) => !prev);
   }
+
+  console.log(q, pcOnly, refreshState);
 
   return (
     <>
@@ -23,7 +41,7 @@ export default function App() {
         <Nav />
         <CurrentPage />
         <Filters addSearchParam={addSearchParam} />
-        <List list={allItems} />
+        <List list={items} />
       </main>
     </>
   );
