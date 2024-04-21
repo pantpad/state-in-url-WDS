@@ -33,13 +33,15 @@ const alphabet = [
   "Zed",
 ];
 
+const categories = ["pc", "other"];
+
 export const mockList = [] as listItem[];
 
 function generateRandomItem() {
   return {
     id: Math.floor(Math.random() * Math.floor(Math.random() * Date.now())),
     name: alphabet[Math.floor(Math.random() * 26)],
-    type: "pc",
+    type: categories[Math.floor(Math.random() * 1)],
   };
 }
 
