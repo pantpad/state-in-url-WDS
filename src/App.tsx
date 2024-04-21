@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./App.css";
 import CurrentPage from "./components/CurrentPage";
 import Filters from "./components/Filters";
